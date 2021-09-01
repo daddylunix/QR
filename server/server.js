@@ -14,6 +14,7 @@ app.use(bodyParser.json());
 
 // Routes
 app.use('/', require('./routes/register'));
+app.use('/', require('./routes/login'));
 
 
 // Server

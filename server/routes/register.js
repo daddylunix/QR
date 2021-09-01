@@ -9,7 +9,6 @@ router.post('/register', async (req, res) => {
     const hashedPassword = await bcrypt.hash(req.body.password, bcryptSalt);
     const usernameExists = await User.findOne({username: req.body.username});
     const emailExists = await User.findOne({email:req.body.email});
-    
     if (!req.body.username || !req.body.email || !req.body.password ) {
         return res.json('Credentials missing')
     }
