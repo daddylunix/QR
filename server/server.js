@@ -3,20 +3,17 @@ const app = express();
 const mongoose = require("mongoose");
 const User = require("./models/User");
 require('dotenv').config()
-
 const password = process.env.USER_PASSWORD
-console.log(password);
 
 const db = async () => {
 try {
     mongoose.connect(`mongodb+srv://admin:${password}@qr-project.j6yuz.mongodb.net/QR?retryWrites=true&w=majority`, {useNewUrlParser: true}, () => {
-        console.log('connected to mongodb.')
+        console.log('MongoDB Atlas Connected! 🌏')
     });
 } catch (error) {
     console.error(err);
 }
 }
-db();
 
 app.get('/', async (req, res) => {
     const user = await new User({
@@ -31,5 +28,7 @@ app.get('/', async (req, res) => {
 })
 
 app.listen(5000, () => {
-    console.log('up and running on port 5000')
+    db();
+    console.log('Server started on port 3000! 🚀')
+    
 })
