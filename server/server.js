@@ -2,31 +2,21 @@ const express = require('express');
 const app = express();
 const mongoose = require("mongoose");
 const User = require("./models/User");
+const cors = require('cors');
+const bodyParser = require('body-parser');
 require('dotenv').config()
 const password = process.env.USER_PASSWORD
+const db = require('./db');
 
-const db = async () => {
-try {
-    mongoose.connect(`mongodb+srv://admin:${password}@qr-project.j6yuz.mongodb.net/QR?retryWrites=true&w=majority`, {useNewUrlParser: true}, () => {
-        console.log('MongoDB Atlas Connected! 🌏')
-    });
-} catch (error) {
-    console.error(err);
-}
-}
+// Middleware
+app.use(cors());
+app.use(bodyParser.json());
 
-app.get('/', async (req, res) => {
-    const user = await new User({
-        username:'hellothere'
-    });
-    try {
-        const saveduser = await user.save();
-        res.json(user);
-    } catch (error) {
-        res.json(error)
-    }
-})
+// Routes
+app.use('/', require('./routes/register'));
 
+
+// Server
 app.listen(5000, () => {
     db();
     console.log('Server started on port 3000! 🚀')
