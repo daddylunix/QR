@@ -3,6 +3,7 @@ const User = require('../models/User');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const bcrypt = require('bcrypt');
+const qrcode = require('qrcode');
 
 router.post('/register', async (req, res) => {
     const bcryptSalt = await bcrypt.genSalt(13);
@@ -15,17 +16,19 @@ router.post('/register', async (req, res) => {
     if (usernameExists || emailExists) {
         return res.json("User already exists")
     };
-    const user = new User({
-        username: req.body.username,
-        email: req.body.email,
-        password: hashedPassword
-    });
     try {
+        const qr = await qrcode.toDataURL(`http://localhost:5000/@${req.body.username}`);
+        const user = new User({
+            username: req.body.username,
+            email: req.body.email,
+            password: hashedPassword,
+            qrcode: qr
+        });
         const savedUser = await user.save();
         res.json(savedUser);
     } catch (error) {
-        console.error(error);
         res.json(error);
+        console.error(error);
     }
 })
 

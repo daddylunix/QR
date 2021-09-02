@@ -7,6 +7,7 @@ const bodyParser = require('body-parser');
 require('dotenv').config()
 const password = process.env.USER_PASSWORD
 const db = require('./db');
+const qrcode = require('qrcode');
 
 // Middleware
 app.use(cors());
@@ -16,6 +17,18 @@ app.use(bodyParser.json());
 app.use('/', require('./routes/register'));
 app.use('/', require('./routes/login'));
 
+
+app.get('/qrtest', async (req, res) => {
+    const generateQR = async text => {
+        try {
+            const response = await qrcode.toDataURL(text);
+            console.log(response);
+        } catch (error) {
+            console.log(err);
+        }
+    }
+    generateQR('https://youtube.com/test123/lunix');
+})
 
 // Server
 app.listen(5000, () => {
