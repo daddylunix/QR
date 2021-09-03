@@ -8,14 +8,17 @@ require('dotenv').config()
 const password = process.env.USER_PASSWORD
 const db = require('./db');
 const qrcode = require('qrcode');
+const cookieParser = require('cookie-parser');
 
 // Middleware
 app.use(cors());
 app.use(bodyParser.json());
+app.use(cookieParser());
 
 // Routes
 app.use('/', require('./routes/register'));
 app.use('/', require('./routes/login'));
+app.use('/', require('./routes/profile'));
 
 
 app.get('/qrtest', async (req, res) => {
