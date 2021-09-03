@@ -4,6 +4,8 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const bcrypt = require('bcrypt');
 const qrcode = require('qrcode');
+const jwt = require('jsonwebtoken');
+require('dotenv').config();
 
 router.post('/register', async (req, res) => {
     const bcryptSalt = await bcrypt.genSalt(13);
@@ -25,7 +27,9 @@ router.post('/register', async (req, res) => {
             qrcode: qr
         });
         const savedUser = await user.save();
-        res.json(savedUser);
+        const token = jwt.sign({id : savedUser._id}, process.env.JWT);
+        res.cookie('token', token).status(200).json('Successfully Registered!')
+        console.log(token);
     } catch (error) {
         res.json(error);
         console.error(error);

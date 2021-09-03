@@ -2,6 +2,8 @@ const router = require('express').Router();
 const User = require('../models/User');
 const bcrypt = require('bcrypt');
 const bodyParser = require('body-parser');
+const jwt = require('jsonwebtoken');
+require ('dotenv').config();
 
 router.post('/login', async (req, res) => {
     if (!req.body.email || !req.body.password ) {
@@ -20,7 +22,9 @@ router.post('/login', async (req, res) => {
         if ( !validPassword ) {
             return res.json('Invalid Credentials :( ')
         }
-        res.json(user);
+        const token = jwt.sign({id : user._id}, process.env.JWT);
+        res.cookie('token', token).status(200).json('Successfully Signed In!')
+        console.log(token);
     } catch (error) {
         res.json(error);
         console.error(error);
