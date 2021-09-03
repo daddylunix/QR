@@ -11,7 +11,10 @@ const qrcode = require('qrcode');
 const cookieParser = require('cookie-parser');
 
 // Middleware
-app.use(cors());
+app.use(cors({
+    credentials:true,
+    origin:'http://localhost:3000'
+}))
 app.use(bodyParser.json());
 app.use(cookieParser());
 
