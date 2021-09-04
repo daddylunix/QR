@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import Cookies from 'js-cookie';
 import axios from 'axios'
+import { useRouter } from 'next/router'
 
 export default function profile() {
+    const router = useRouter()
     const userCookie = Cookies.get('token');
-    if (!userCookie) {
-        // redirect to register page.
-    }
     const [ response, setResponse ] = useState();
     const fetchUserData = async () => {
         const config = {
@@ -20,6 +19,10 @@ export default function profile() {
         setResponse(data.data);
     }
     useEffect(() => {
+        if (!userCookie) {
+            // redirect to register page.
+            router.push('/register')
+        }
         fetchUserData();
     }, [])
     return (
