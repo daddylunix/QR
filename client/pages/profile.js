@@ -7,6 +7,7 @@ export default function profile() {
     const router = useRouter()
     const userCookie = Cookies.get('token');
     const [ response, setResponse ] = useState();
+    const [ qrcode, setQrcode ] = useState();
     const fetchUserData = async () => {
         const config = {
             header: {
@@ -16,7 +17,9 @@ export default function profile() {
             withCredentials: true
         }
         const data = await axios.get('http://localhost:5000/profile', config);
-        setResponse(data.data);
+        console.log(data.data.qrcode)
+        setResponse(JSON.stringify(data.data));
+        setQrcode(data.data.qrcode)
     }
     useEffect(() => {
         if (!userCookie) {
@@ -27,7 +30,8 @@ export default function profile() {
     }, [])
     return (
         <div>
-           {JSON.stringify(response)} 
+           {response} 
+           <img src={qrcode}/>
         </div>
     )
 }
