@@ -18,6 +18,21 @@ const UserSchema = new mongoose.Schema({
     qrcode: {
         type: String,
         unique: true
+    },
+    instagram: {
+        type: String,
+        required: true,
+        default:''
+    },
+    twitter: {
+        type: String,
+        required: true,
+        default:''
+    },
+    linkedin: {
+        type: String,
+        required: true,
+        default:''
     }
 })
 

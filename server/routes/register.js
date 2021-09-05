@@ -24,7 +24,10 @@ router.post('/register', async (req, res) => {
             username: req.body.username,
             email: req.body.email,
             password: hashedPassword,
-            qrcode: qr
+            qrcode: qr,
+            instagram:'default',
+            twitter:'default',
+            linkedin: 'default'
         });
         const savedUser = await user.save();
         const token = jwt.sign({id : savedUser._id}, process.env.JWT);
