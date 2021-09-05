@@ -22,6 +22,7 @@ app.use(cookieParser());
 app.use('/', require('./routes/register'));
 app.use('/', require('./routes/login'));
 app.use('/', require('./routes/profile'));
+app.use('/', require('./routes/@viewprofile'));
 
 
 app.get('/qrtest', async (req, res) => {
