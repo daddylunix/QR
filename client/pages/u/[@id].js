@@ -3,7 +3,7 @@ import { useRouter  } from 'next/router'
 import axios from 'axios';
 
 export default function id () {
-    const [ response, setResponse ] = useState("");
+    const [ response, setResponse ] = useState();
     const router = useRouter();
     // const id = router.query["@id"];
     const id = router.query["@id"];
@@ -26,7 +26,6 @@ export default function id () {
     }, [id])
     return (
       <div>
-    <p>params: {id}</p>
     <h2>{JSON.stringify(response)}</h2>
     </div>
   ) 
