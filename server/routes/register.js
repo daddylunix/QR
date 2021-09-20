@@ -19,7 +19,7 @@ router.post('/register', async (req, res) => {
         return res.json("User already exists")
     };
     try {
-        const qr = await qrcode.toDataURL(`http://localhost:5000/u/@${req.body.username}`);
+        const qr = await qrcode.toDataURL(`http://localhost:3000/u/@${req.body.username}`);
         const user = new User({
             username: req.body.username,
             email: req.body.email,
