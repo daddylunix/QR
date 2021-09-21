@@ -3,9 +3,9 @@ import { useRouter  } from 'next/router'
 import axios from 'axios';
 
 export default function id () {
-    const [ response, setResponse ] = useState();
+    const [ response, setResponse ] = useState([]);
+    const [ socials, setSocials ] = useState();
     const router = useRouter();
-    // const id = router.query["@id"];
     const id = router.query["@id"];
     const testFunction = async (id) => {
       const config = {
@@ -26,7 +26,10 @@ export default function id () {
     }, [id])
     return (
       <div>
-    <h2>{JSON.stringify(response)}</h2>
+    <h1>{response.username}</h1>
+    <img src={response.qrcode}></img>
+    <br/>
+    {response.twitter}
     </div>
   ) 
 }

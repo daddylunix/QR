@@ -20,15 +20,14 @@ export default function register () {
     }
     return (
         <div>
+            <center>
             <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} required />
             <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
             <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
             <button type="submit" onClick={registerUser}>Register</button>
            <h2>Register Page</h2> 
-           {username}
-           {email}
-           {password}
            <h1>{response}</h1>
+           </center>
         </div>
     )
 }

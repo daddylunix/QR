@@ -4,8 +4,8 @@ import axios from 'axios';
 
 export default function login() {
     const [ email, setEmail ] = useState();
-    const [ password, setPassword ] = useState();
-    const [ response, setResponse ] = useState();
+    const [ password, setPassword ] = useState('');
+    const [ response, setResponse ] = useState('');
     const loginUser = async (e) => {
         e.preventDefault();
         const config = {
@@ -16,14 +16,15 @@ export default function login() {
             withCredentials: true
         }
         const data = await axios.post('http://localhost:5000/login',{email, password}, config)
-        setResponse(JSON.stringify(data.data));
+        setResponse(data.data);
     }
     return (
         <div>
             <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
             <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
             <button type="submit" onClick={loginUser}>Login</button>
-            {response}
+            <br/>
+            <h1>{response}</h1>
         </div>
     )
 }
