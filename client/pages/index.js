@@ -9,7 +9,7 @@ export default function Home() {
       <section class="text-gray-600 body-font">
   <div class="container mx-auto flex px-5 py-24 md:flex-row flex-col items-center">
     <div class="lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center">
-      <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900"><span class="bg-clip-text text-transparent bg-gradient-to-r from-green-400 to-blue-500"> Next-level Technology</span>
+      <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900"><span class="bg-clip-text text-transparent bg-gradient-to-r from-green-400 to-blue-500 font-bold"> Next-level Technology</span>
         <br class="hidden lg:inline-block"/>Business cards.
       </h1>
       <p class="mb-8 leading-relaxed">Combining Elegance, Design & Next-level Technology, plant cold-pressed tacos poke beard tote bag. Heirloom echo park mlkshk tote bag selvage hot chicken authentic tumeric truffaut hexagon try-hard chambray.</p>

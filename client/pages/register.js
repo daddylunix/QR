@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import axios from 'axios'
 import 'tailwindcss/tailwind.css'
 import Router from 'next/router'
+import Head from 'next/head'
 
 export default function register () {
     const [ username, setUsername ] = useState('');
@@ -27,14 +28,18 @@ export default function register () {
     }
     return (
         <div>
+        <Head>
+        <title>Register</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        </Head>
         <div>
         <section class="text-gray-600 body-font">
         <div class="container px-5 py-24 mx-auto flex flex-wrap items-center">
         <div class="lg:w-3/5 md:w-1/2 md:pr-16 lg:pr-0 pr-0">
-        <h1 class="title-font font-medium text-3xl text-gray-900">Combining <span class="bg-clip-text text-transparent bg-gradient-to-r from-green-400 to-blue-500"> Next-level Technology</span> with business cards.</h1>
+        <h1 class="title-font font-medium text-3xl text-gray-900">Combining <span class="bg-clip-text text-transparent bg-gradient-to-r from-green-400 to-blue-500 font-bold"> Next-level Technology</span> with business cards.</h1>
         <p class="leading-relaxed mt-4">Poke slow-carb mixtape knausgaard, typewriter street art gentrify hammock starladder roathse. Craies vegan tousled etsy austin.</p>
         </div>
-        <div class="lg:w-2/6 md:w-1/2 bg-gray-100 rounded-lg p-8 flex flex-col md:ml-auto w-full mt-10 md:mt-0 shadow-2xl">
+        <div class="lg:w-2/6 md:w-1/2 bg-gray-100 rounded-lg p-8 flex flex-col md:ml-auto w-full mt-10 md:mt-0 shadow-xl">
         <h2 class="text-gray-900 text-lg font-medium title-font mb-5">Register</h2>
         <div class="relative mb-4">
         <label for="full-name" class="leading-7 text-sm text-gray-600">Username</label>
